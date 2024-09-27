@@ -165,3 +165,6 @@ STRIPE_PUBLISHABLE_KEY = 'your-publishable-key'
 
 RECAPTCHA_PUBLIC_KEY = 'your-site-key'
 RECAPTCHA_PRIVATE_KEY = 'your-secret-key'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

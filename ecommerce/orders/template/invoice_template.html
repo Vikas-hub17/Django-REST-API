@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .header, .footer {
+            text-align: center;
+        }
+        .order-info, .items-table {
+            margin: 20px 0;
+        }
+        .items-table th, .items-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .total {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Invoice #{{ order.id }}</h1>
+        <p>Order placed by {{ user.username }}</p>
+    </div>
+
+    <div class="order-info">
+        <p>Order Date: {{ order.created_at }}</p>
+        <p>Order Total: ${{ order.total_amount }}</p>
+    </div>
+
+    <table class="items-table" width="100%">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.product.price }}</td>
+                <td>${{ item.quantity|multiply:item.product.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="total">
+        <h3>Total Amount: ${{ order.total_amount }}</h3>
+    </div>
+
+    <div class="footer">
+        <p>Thank you for your purchase!</p>
+    </div>
+</body>
+</html>
