@@ -168,3 +168,15 @@ RECAPTCHA_PRIVATE_KEY = 'your-secret-key'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Use console backend for testing (this will print emails in the console)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# For production, you can use an actual email backend like SMTP:
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Example with Gmail
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+DEFAULT_FROM_EMAIL = 'webmaster@yourdomain.com'
