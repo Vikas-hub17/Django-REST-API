@@ -16,16 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('ecommerce.urls')),
 ]
 
 from django.urls import path, include
 
 urlpatterns = [
+    path('', home_view, name='home'),
     path('api/users/', include('users.urls')),
-     path('api/payments/', include('payments.urls')),
+    path('api/payments/', include('payments.urls')),
 ]
 
 from django.conf import settings
